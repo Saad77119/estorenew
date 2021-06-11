@@ -1,0 +1,140 @@
+﻿@using Estore.Client.Services
+@inject NavigationManager navigationManager
+@inject CustomStateProvider authStateProvider
+<AuthorizeView Roles="Buyer">
+    <!-- navbar code starts here -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
+        <a href="index.html" class="navbar-brand text-center d-lg-none text-danger text-uppercase">eStore</a>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav m-auto">
+
+
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="#">
+                        <span class="oi oi-home" aria-hidden="true"></span> Home
+                    </NavLink>
+                </li>
+
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="Aboutus">
+                        <span class="oi oi-list-rich" aria-hidden="true"></span> About US
+                    </NavLink>
+                </li>
+                <li class="nav-item px-3">
+                    <NavLink class="nav-link" href="ContactUS">
+                        <span class="oi oi-contrast" aria-hidden="true"></span> Contact US
+                    </NavLink>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="Login">
+                        <span class="oi oi-contrast" aria-hidden="true"></span> Login
+                    </NavLink>
+
+                </li>
+
+
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="SignUp">
+                        <span class="oi oi-contrast" aria-hidden="true"></span> SignUp
+                    </NavLink>
+                    <a class="nav-link" href="signup.html"></a>
+                </li>
+                <li class="nav-item">
+                </li>
+
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="AddProduct">
+                        <span class="oi oi-contrast" aria-hidden="true"></span> Add Product
+                    </NavLink>
+                    <a class="nav-link" href="AddProduct"></a>
+                </li>
+                <li class="nav-item">
+                    <NavLink class="nav-link" href="LoginDashboard">
+                        <span class="oi oi-contrast" aria-hidden="true"></span> Admin
+                    </NavLink>
+                    <a class="nav-link" href="LoginDashboard"></a>
+                </li>
+            </ul>
+            <!-- <button type="button" id="nav_login_btn" class="btn btn-primary d-none d-md-block "><a
+                href="login.html">Login</a></button>
+            <button type="button" id="nav_signUp-btn" class="btn btn-success ml-3 mr-2 d-none d-md-block"><a
+                    href="#">SignUp</a></button> -->
+        </div>
+
+    </nav>
+
+</AuthorizeView>
+<AuthorizeView Roles="Admin,Seller">
+    <header class="app-header">
+        <a class="app-header__logo" href="Index2">Estore</a>
+        <!-- Sidebar toggle button-->
+        <button class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- Navbar Right Menu-->
+        <ul class="app-nav">
+
+
+            <!-- User Menu-->
+            <li class="dropdown">
+                <button class="app-nav__item btn btn-link ml-md-auto" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>@context.User.Identity.Name</span><i class="fa fa-user fa-lg"></i></button>
+                <ul class="dropdown-menu settings-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton"sss>
+                    <li>
+                        <button type="button" class="btn btn-link ml-md-auto dropdown-item" @onclick="@LogoutClick"><i class="fa fa-sign-out fa-lg"></i> Logout</button>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </header>
+    <!-- Sidebar menu-->
+    <div class="app-sidebar__overlay @NavMenuCssClass" @onclick="ToggleNavMenu"></div>
+    <aside class="app-sidebar">
+        <div class="app-sidebar__user">
+
+            <div>
+                <p class="app-sidebar__user-name">Estore</p>
+              
+            </div>
+        </div>
+
+        <ul class="app-menu">
+            <li>
+                <NavLink class="app-menu__item active" href="Index2"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></NavLink>
+            </li>
+
+
+
+            <li><NavLink class="app-menu__item" href="Formsamples" data-toggle="treeview"><i class="app-menu__icon fa fa-edit"></i><span class="app-menu__label"> Product</span></NavLink></li>
+
+
+            <li>  <NavLink class="app-menu__item" href="Tablebasic" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Data</span></NavLink></li>
+            <li> <NavLink class="app-menu__item" href="Pageinvoice" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label">Invoice</span></NavLink></li>
+            <li> <NavLink class="app-menu__item" href="Pagemailbox" data-toggle="treeview"><i class="app-menu__icon fa fa-th-list"></i><span class="app-menu__label"> Mailbox</span></NavLink></li>
+        </ul>
+
+
+    </aside>
+</AuthorizeView>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+    async Task LogoutClick()
+    {
+        await authStateProvider.Logout();
+        navigationManager.NavigateTo("/login");
+    }
+}
