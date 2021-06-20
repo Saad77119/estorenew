@@ -112,7 +112,7 @@ using Estore.Client.Services;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 34 "C:\Users\saadr\OneDrive\Desktop\ead semester\Estore\Client\Shared\MainLayout.razor"
+#line 35 "C:\Users\saadr\OneDrive\Desktop\ead semester\Estore\Client\Shared\MainLayout.razor"
                
 
         [CascadingParameter]

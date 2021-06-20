@@ -199,12 +199,12 @@
       "netstandard.dll": "sha256-B6gmXEMfYgOuaOR1g1cGHLn2kDlZYAah4K2XNUZbTs4=",
       "System.Private.CoreLib.dll": "sha256-XY0bl1U8F\/iSbQzkmIHM8UtE\/R9VntZoy\/kMbvuMjTA=",
       "Estore.Shared.dll": "sha256-dBMbXeze0yFDHzKz5a6G\/WGLa53Uiyl7jgJ4z6mCe28=",
-      "Estore.Client.dll": "sha256-JLJ0JxmKdZoEFJtyG1JZYTlb7bP+rJwJtvpUJYWxMC8="
+      "Estore.Client.dll": "sha256-NG0UlvsjKX3SUqKJKv8EbCLhoyFfSVggZatxkZQ29Ig="
     },
     "lazyAssembly": null,
     "pdb": {
       "Estore.Shared.pdb": "sha256-u+zvqOT5Ze9ocyeof5eAruukFnHChMdDXYN0oVmlbhk=",
-      "Estore.Client.pdb": "sha256-AN0kjDyAUUqaqUQU4om0TmxBaSCnN\/aPmv7nxfm7jcY="
+      "Estore.Client.pdb": "sha256-l5Cp55+SEskG04GWUiKQEbskg0OAVu8iHlO1jX8sL\/I="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-OEDZp6noMH3AdT8qd0zd7ZXzy2CsPQ+CZeQnYmRoVWo=",
